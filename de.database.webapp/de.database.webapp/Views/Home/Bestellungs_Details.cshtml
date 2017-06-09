@@ -1,0 +1,76 @@
+﻿@model de.database.webapp.Models.Search
+@using System.Data.Entity;
+
+@{
+    
+    ViewBag.Title = "Bestellungs_Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+</head>
+<body>
+    <h2>Bestellungs Details</h2>
+    <br />
+    <br />
+    <div>
+        Kunde:
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipName
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipAddress
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipPostalCode @Model.SearchResultOrders[0].ShipCity
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipCountry
+            <br />
+            <br />
+            Bestellung:
+            <br />
+            Bestellnummer: @Model.SearchResultDetailOrder[0].OrderID
+            <br />
+            Bestellt am: @Model.SearchResultDetailOrder[0].Order.OrderDate
+        <br />
+        <br />
+    </div>
+
+    <table class="table-hover col-sm-12 table-striped">
+        @{
+            if (Model != null)
+            {
+                <tr>
+                    <td>Position</td>
+                    <td>Produkt Name</td>
+                    <td>Einzelpreis</td>
+                    <td>Stückzahl</td>
+                    <td>Gesamt pro Position</td>
+                </tr>
+                decimal gesamt = 0;
+                int i = 1;
+                foreach(var orderPos in Model.SearchResultDetailOrder)
+                {
+                    var einzelPreis = orderPos.UnitPrice * orderPos.Quantity;
+                    <tr>
+                        <td>@i</td>
+                        <td>@orderPos.Product.ProductName</td>
+                        <td>@orderPos.UnitPrice.ToString("C")</td>
+                        <td>@orderPos.Quantity</td>
+                        <td>@einzelPreis.ToString("C")</td>
+                        
+                    </tr>
+                    i++;
+                    gesamt += einzelPreis;
+                }
+                <tr>
+                    <td>Gesamt</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@gesamt.ToString("C")</td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+
+
