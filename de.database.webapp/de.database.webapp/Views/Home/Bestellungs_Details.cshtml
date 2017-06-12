@@ -43,26 +43,36 @@
                     <td>Produkt Name</td>
                     <td>Einzelpreis</td>
                     <td>Stückzahl</td>
+                    <td>Rabatt</td>
                     <td>Gesamt pro Position</td>
                 </tr>
-                decimal gesamt = 0;
                 int i = 1;
+                double discount, price = 0, gesamt = 0;
                 foreach(var orderPos in Model.SearchResultDetailOrder)
                 {
-                    var einzelPreis = orderPos.UnitPrice * orderPos.Quantity;
+                    discount = orderPos.Discount * 100;
+                    if (discount > 0)
+                    {
+                        price = Convert.ToDouble(orderPos.UnitPrice) - Convert.ToDouble(orderPos.UnitPrice) * Convert.ToDouble(orderPos.Discount);
+                    }
+                    var einzelPreis = price * orderPos.Quantity;
                     <tr>
                         <td>@i</td>
                         <td>@orderPos.Product.ProductName</td>
-                        <td>@orderPos.UnitPrice.ToString("C")</td>
+                        <td>@price.ToString("C")</td>
                         <td>@orderPos.Quantity</td>
+                        <td>@discount.ToString("F2") %</td>
                         <td>@einzelPreis.ToString("C")</td>
+
                         
                     </tr>
+                    discount= 0;
                     i++;
                     gesamt += einzelPreis;
                 }
                 <tr>
                     <td>Gesamt</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
