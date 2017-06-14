@@ -5,12 +5,13 @@ using System.Web;
 using de.database.webapp.Models;
 using System.Web.Mvc;
 using System.Data.Entity;
+using NorthwindContext;
 
 namespace de.database.webapp.Controllers
 {
     public class HomeController : Controller
     {
-        public NorthwindContext db = new NorthwindContext();
+        NorthwindContext.NorthwindContext db = new NorthwindContext.NorthwindContext();
         static private Search search = new Search();
 
         public ActionResult Index()

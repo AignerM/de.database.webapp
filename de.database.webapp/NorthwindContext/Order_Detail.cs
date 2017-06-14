@@ -1,4 +1,4 @@
-namespace de.database.webapp
+namespace NorthwindContext
 {
     using System;
     using System.Collections.Generic;
