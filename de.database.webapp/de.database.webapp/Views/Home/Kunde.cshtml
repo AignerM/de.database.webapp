@@ -1,13 +1,12 @@
 ﻿@model de.database.webapp.Models.Search
 
 @{
-    ViewBag.Title = "Kunde";
+    ViewBag.Title = "Kundensuche";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <head>
-    
-
+    <title>Kundensuche</title>
 </head>
 
 <body>
@@ -18,7 +17,7 @@
         <form action="./GetKunde" method="post">
             <label for="customer">Kundenname: </label>
             <input type="text" class="input-sm" name="customer" placholder="Kundename..." value="" id="customer" />
-            <button class="btn" type="submit" style="background-color:#222222;color:white">Suchen</button>
+            <button class="btn-black" type="submit">Suchen</button>
         </form>
     </div>
     <br />
@@ -28,11 +27,12 @@
             @{
                 if (Model != null)
                 {
-                    string link;
-                    <tr><td>Firmen Name</td><td>Adresse</td><td>PLZ</td><td>Stadt</td><td>Kontakt Name</td><td>Kunden ID</td><td>Aktionen</td></tr>
+                    string link, editlink;
+                    <tr><td>Firmen Name</td><td>Adresse</td><td>PLZ</td><td>Stadt</td><td>Kontakt Name</td><td>Kunden ID</td><td>Aktionen</td><td>Edit</td></tr>
                     foreach (var customer in Model.SearchResultCustomer)
                     {
                         link = "/home/GetOrders?id=" + customer.CustomerID.ToString();
+                        editlink = "/home/Edit?id=" + customer.CustomerID.ToString();
                         <tr>
                             <td>@customer.CompanyName</td> 
                             <td>@customer.Address</td>
@@ -41,6 +41,7 @@
                             <td>@customer.ContactName</td>
                             <td id="customerID">@customer.CustomerID</td>
                             <td><a href=@link>Bestellungen</a></td>
+                            <td><a href="@editlink">Edit</a></td>
                         </tr>
                     }
                 }

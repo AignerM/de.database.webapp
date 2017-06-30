@@ -1,0 +1,48 @@
+﻿@model Database.Models.Edit
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Edit</h2>
+
+        <form action="./AcceptEdit" method="post">
+            <div class="form-inline">
+                <label for="customer">Kontakt Name: </label>
+                <input type="text" class="input-sm" name="customerTitle" value="@Model.ContactTitle" id="customerTitle" />
+                <input type="text" class="input-sm" name="customer" value="@Model.ContactName" id="customer" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label for="companyName">Firmen Name: </label>
+                <input type="text" class="input-sm" name="companyName" value="@Model.CompanyName" id="companyName" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label for="Adress">Adresse: </label>
+                <input type="text" class="input-sm" name="adress" value="@Model.Adress" id="adress" />
+                <input type="text" class="input-sm" name="PLZ" value="@Model.PLZ" id="PLZ"/>
+                <input type="text" class="input-sm" name="city" value="@Model.City" id="city" />
+                <input type="text" class="input-sm" name="country" value="@Model.Country" id="country" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <label for="contact">Kontakt: </label>
+                <input type="text" class="input-sm" name="phone" value="@Model.Phone" id="phone" />
+                <input type="text" class="input-sm" name="fax" value="@Model.Fax" id="fax" />
+            </div>
+            <br />
+            <div class="form-inline">
+                <button class="btn" type="submit" style="background-color:#222222;color:white">Speichern</button>
+                <a class="btn" href="./Kunde" style="background-color:#222222;color:white">Abbrechen</a>
+            </div>
+        </form>
+    </body>
+</html>
+

@@ -1,0 +1,89 @@
+﻿@model Database.Models.Search
+
+@{
+
+    ViewBag.Title = "Bestellungs_Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+</head>
+<body>
+    <h2>Bestellungs Details</h2>
+    <br />
+    <br />
+    <div>
+        Kunde:
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipName
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipAddress
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipPostalCode @Model.SearchResultOrders[0].ShipCity
+            <br />
+            @Model.SearchResultDetailOrder[0].Order.ShipCountry
+            <br />
+            <br />
+            Bestellung:
+            <br />
+            Bestellnummer: @Model.SearchResultDetailOrder[0].OrderID
+            <br />
+            Bestellt am: @Model.SearchResultDetailOrder[0].Order.OrderDate
+        <br />
+        <br />
+    </div>
+
+    <table class="table-hover col-sm-12 table-striped">
+        @{
+            if (Model != null)
+            {
+                <tr>
+                    <td>Position</td>
+                    <td>Produkt Name</td>
+                    <td>Einzelpreis</td>
+                    <td>Stückzahl</td>
+                    <td>Rabatt</td>
+                    <td>Gesamt pro Position</td>
+                </tr>
+                int i = 1;
+                double discount, price = 0, gesamt = 0;
+                foreach (var orderPos in Model.SearchResultDetailOrder)
+                {
+                    discount = orderPos.Discount * 100;
+                    if (discount > 0)
+                    {
+                        price = Convert.ToDouble(orderPos.UnitPrice) - Convert.ToDouble(orderPos.UnitPrice) * Convert.ToDouble(orderPos.Discount);
+                    }
+                    else
+                    {
+                        price = Convert.ToDouble(orderPos.UnitPrice);
+                    }
+                    var einzelPreis = price * orderPos.Quantity;
+                    <tr>
+                        <td>@i</td>
+                        <td>@orderPos.Product.ProductName</td>
+                        <td>@orderPos.UnitPrice.ToString("C")</td>
+                        <td>@orderPos.Quantity</td>
+                        <td>@discount.ToString("F2") %</td>
+                        <td>@einzelPreis.ToString("C")</td>
+
+                        
+                    </tr>
+                    discount = 0;
+                    i++;
+                    gesamt += einzelPreis;
+                }
+                <tr>
+                    <td>Gesamt</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@gesamt.ToString("C")</td>
+                </tr>
+            }
+        }
+    </table>
+    @{ var link = "/home/GetOrders?id=" + Model.SearchResultOrders[0].CustomerID.ToString(); }
+    <a class="btn-black" href="@link">Zurück</a>
+</body>

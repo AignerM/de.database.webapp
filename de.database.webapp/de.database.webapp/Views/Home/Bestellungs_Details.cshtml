@@ -2,12 +2,12 @@
 @using System.Data.Entity;
 
 @{
-    
-    ViewBag.Title = "Bestellungs_Details";
+
+    ViewBag.Title = "Bestellungs Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
-
+    <title>Bestellungs Details</title>
 </head>
 <body>
     <h2>Bestellungs Details</h2>
@@ -48,25 +48,29 @@
                 </tr>
                 int i = 1;
                 double discount, price = 0, gesamt = 0;
-                foreach(var orderPos in Model.SearchResultDetailOrder)
+                foreach (var orderPos in Model.SearchResultDetailOrder)
                 {
                     discount = orderPos.Discount * 100;
                     if (discount > 0)
                     {
                         price = Convert.ToDouble(orderPos.UnitPrice) - Convert.ToDouble(orderPos.UnitPrice) * Convert.ToDouble(orderPos.Discount);
                     }
+                    else
+                    {
+                        price = Convert.ToDouble(orderPos.UnitPrice);
+                    }
                     var einzelPreis = price * orderPos.Quantity;
                     <tr>
                         <td>@i</td>
                         <td>@orderPos.Product.ProductName</td>
-                        <td>@price.ToString("C")</td>
+                        <td>@orderPos.UnitPrice.ToString("C")</td>
                         <td>@orderPos.Quantity</td>
                         <td>@discount.ToString("F2") %</td>
                         <td>@einzelPreis.ToString("C")</td>
 
                         
                     </tr>
-                    discount= 0;
+                    discount = 0;
                     i++;
                     gesamt += einzelPreis;
                 }
@@ -81,6 +85,8 @@
             }
         }
     </table>
+    @{ var link = "/home/GetOrders?id=" + Model.SearchResultOrders[0].CustomerID.ToString(); }
+    <a class="btn-black" href="@link">Zurück</a>
 </body>
 
 

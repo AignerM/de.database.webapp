@@ -1,0 +1,52 @@
+﻿@model Database.Models.Search
+
+@{
+    ViewBag.Title = "Kunde";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    
+
+</head>
+
+<body>
+    <h2>Kundensuche</h2>
+    <br />
+    <br />
+    <div class="form-inline">
+        <form action="./GetKunde" method="post">
+            <label for="customer">Kundenname: </label>
+            <input type="text" class="input-sm" name="customer" placholder="Kundename..." value="" id="customer" />
+            <button class="btn-black" type="submit">Suchen</button>
+        </form>
+    </div>
+    <br />
+    <br />
+    
+        <table class="table-hover col-sm-12 table-striped">
+            
+                @if (@Model != null)
+                {
+                    string link, editlink;
+                    <tr><td>Firmen Name</td><td>Adresse</td><td>PLZ</td><td>Stadt</td><td>Kontakt Name</td><td>Kunden ID</td><td>Aktionen</td><td>Edit</td></tr>
+                    foreach (var customer in @Model.SearchResultCustomer)
+                    {
+                        link = "/home/GetOrders?id=" + customer.CustomerID.ToString();
+                        editlink = "/home/Edit?id=" + customer.CustomerID.ToString();
+                        <tr>
+                            <td>@customer.CompanyName</td> 
+                            <td>@customer.Address</td>
+                            <td>@customer.PostalCode</td>
+                            <td>@customer.City</td>
+                            <td>@customer.ContactName</td>
+                            <td id="customerID">@customer.CustomerID</td>
+                            <td><a href=@link>Bestellungen</a></td>
+                            <td><a href="@editlink">Edit</a></td>
+                        </tr>
+                    }
+                }
+            
+        </table>
+</body>
+

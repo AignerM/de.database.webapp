@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.database.webapp", "de.da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindContext", "NorthwindContext\NorthwindContext.csproj", "{D1125FC7-94C3-41E9-B985-6D55ED65FD5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{7192B902-DDF3-4CE8-9D85-348354FEB942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{36C508C1-F0AF-47F1-B368-D568ECFE5F24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D1125FC7-94C3-41E9-B985-6D55ED65FD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1125FC7-94C3-41E9-B985-6D55ED65FD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1125FC7-94C3-41E9-B985-6D55ED65FD5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7192B902-DDF3-4CE8-9D85-348354FEB942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7192B902-DDF3-4CE8-9D85-348354FEB942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7192B902-DDF3-4CE8-9D85-348354FEB942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7192B902-DDF3-4CE8-9D85-348354FEB942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C508C1-F0AF-47F1-B368-D568ECFE5F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C508C1-F0AF-47F1-B368-D568ECFE5F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C508C1-F0AF-47F1-B368-D568ECFE5F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C508C1-F0AF-47F1-B368-D568ECFE5F24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

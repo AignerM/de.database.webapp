@@ -1,0 +1,56 @@
+﻿@model Database.Models.Search
+
+@{
+    ViewBag.Title = "Bestellungen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+</head>
+
+<body>
+    <h2>Bestellungen</h2>
+    <br />
+    <br />
+    <div>
+        Kunde: 
+            <br />
+            @Model.SearchResultOrders[0].ShipName
+            <br />
+            @Model.SearchResultOrders[0].ShipAddress
+            <br />
+            @Model.SearchResultOrders[0].ShipPostalCode @Model.SearchResultOrders[0].ShipCity
+            <br />
+            @Model.SearchResultOrders[0].ShipCountry
+            <br />
+            <br />
+    </div>
+    
+
+    <table class="table-hover col-sm-12 table-striped">
+        @{
+            if (Model != null)
+            {
+                string link;
+                <tr>
+                    <td>Bestell ID</td>
+                    <td>Bestell Datum</td>
+                    <td>Wird benötigt am</td>
+                    <td>Verschickt am</td>
+                    <td>Aktionen</td>
+                </tr>
+                foreach (var order in Model.SearchResultOrders)
+                {
+                    link = "/home/GetDetail_Order?id=" + order.OrderID.ToString();
+                        <tr>
+                            <td> @order.OrderID</td>
+                            <td>@order.OrderDate</td>
+                            <td>@order.RequiredDate</td>
+                            <td>@order.ShippedDate</td>
+                            <td><a href=@link>Bestellungs Details</a></td>
+                        </tr>
+                    }
+                }
+            }
+    </table>
+</body>
