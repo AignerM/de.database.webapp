@@ -34,7 +34,7 @@
         <br />
     </div>
 
-    <table class="table-hover col-sm-12 table-striped">
+    <table class="table-hover col-sm-12 highlight responsive-table">
         @{
             if (Model != null)
             {
@@ -86,7 +86,7 @@
         }
     </table>
     @{ var link = "/home/GetOrders?id=" + Model.SearchResultOrders[0].CustomerID.ToString(); }
-    <a class="btn-black" href="@link">Zurück</a>
+    <a class="waves-effect waves-light black btn" href="@link">Zurück</a>
 </body>
 
 

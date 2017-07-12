@@ -27,7 +27,7 @@
     </div>
     
 
-    <table class="table-hover col-sm-12 table-striped">
+    <table class="table-hover col-sm-12 highlight responsive-table">
         @{
             if (Model != null)
             {
@@ -38,6 +38,7 @@
                     <td>Wird benötigt am</td>
                     <td>Verschickt am</td>
                     <td>Aktionen</td>
+                    <td>Angekommen</td>
                 </tr>
                 foreach (var order in Model.SearchResultOrders)
                 {
@@ -48,6 +49,14 @@
                             <td>@order.RequiredDate</td>
                             <td>@order.ShippedDate</td>
                             <td><a href=@link>Bestellungs Details</a></td>
+                            @if (order.ShippedDate != null)
+                            {
+                                <td><i class="material-icons">done</i></td>
+                            }
+                            else
+                            {
+                                <td><i class="material-icons">close</i></td>
+                            }
                         </tr>
                     }
                 }

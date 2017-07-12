@@ -10,20 +10,12 @@
 </head>
 
 <body>
-    <h2>Kundensuche</h2>
-    <br />
-    <br />
-    <div class="form-inline">
-        <form action="./GetKunde" method="post">
-            <label for="customer">Kundenname: </label>
-            <input type="text" class="input-sm" name="customer" placholder="Kundename..." value="" id="customer" />
-            <button class="btn-black" type="submit">Suchen</button>
-        </form>
-    </div>
+    <h3>Kundensuche</h3>
     <br />
     <br />
     
-        <table class="table-hover col-sm-12 table-striped">
+    
+        <table class="table- col-sm-12 highlight responsive-table">
             @{
                 if (Model != null)
                 {
@@ -35,9 +27,9 @@
                         editlink = "/home/Edit?id=" + customer.CustomerID.ToString();
                         <tr>
                             <td>@customer.CompanyName</td> 
-                            <td>@customer.Address</td>
-                            <td>@customer.PostalCode</td>
-                            <td>@customer.City</td>
+                            <td>@customer.Wohnort.Address</td>
+                            <td>@customer.Wohnort.PostalCode</td>
+                            <td>@customer.Wohnort.City</td>
                             <td>@customer.ContactName</td>
                             <td id="customerID">@customer.CustomerID</td>
                             <td><a href=@link>Bestellungen</a></td>

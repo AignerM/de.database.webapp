@@ -26,6 +26,9 @@ namespace Database
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/materialize/css").Include(
+                "~/Content/materialize/css/materialize.css"));
         }
     }
 }

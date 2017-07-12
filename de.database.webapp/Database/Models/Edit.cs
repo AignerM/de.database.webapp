@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using NorthwindContext;
-
-namespace Database.Models
+﻿namespace Database.Models
 {
     public class Edit
     {

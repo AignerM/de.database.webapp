@@ -39,8 +39,6 @@ namespace de.database.webapp.Controllers
         public ActionResult GetKunde()
         {
             var dd = Request.Form["customer"];
-            
-            
                 var searchResult = db.Customers
                     .Where(x => x.CompanyName.Contains(dd) || x.CustomerID.Contains(dd) || x.ContactName.Contains(dd));
                 var liSearchResult=searchResult.ToList<Customer>();
@@ -88,14 +86,14 @@ namespace de.database.webapp.Controllers
                 .Where(x => x.CustomerID == id);
             foreach(var item in searchResult)
             {
-                edit.Adress = item.Address;
-                edit.City = item.City;
+                edit.Adress = item.Wohnort.Address;
+                edit.City = item.Wohnort.City;
                 edit.ContactName = item.ContactName;
                 edit.ContactTitle = item.ContactTitle;
-                edit.Country = item.Country;
+                edit.Country = item.Wohnort.Country;
                 edit.Fax = item.Fax;
                 edit.Phone = item.Phone;
-                edit.PLZ = item.PostalCode;
+                edit.PLZ = item.Wohnort.PostalCode;
                 edit.CompanyName = item.CompanyName;
             }
             edit.CustomerID = id;
@@ -118,7 +116,7 @@ namespace de.database.webapp.Controllers
             {
                 editCustomer.ContactTitle = customerTitle;
             }
-            if(customer!=null&& customer != edit.ContactName)
+            if (customer != null && customer != edit.ContactName)
             {
                 editCustomer.ContactName = customer;
             }
@@ -128,19 +126,19 @@ namespace de.database.webapp.Controllers
             }
             if (adress != null && adress != edit.Adress)
             {
-                editCustomer.Address = adress;
+                editCustomer.Wohnort.Address = adress;
             }
             if (PLZ != null && PLZ != edit.PLZ)
             {
-                editCustomer.PostalCode = PLZ;
+                editCustomer.Wohnort.PostalCode = PLZ;
             }
             if (city != null && city != edit.City)
             {
-                editCustomer.City = city;
+                editCustomer.Wohnort.City = city;
             }
             if (country != null && country != edit.Country)
             {
-                editCustomer.Country = country;
+                editCustomer.Wohnort.Country = country;
             }
             if (phone != null && phone != edit.Phone)
             {

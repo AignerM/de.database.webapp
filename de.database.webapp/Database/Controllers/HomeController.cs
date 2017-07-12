@@ -17,20 +17,6 @@ namespace Database.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult Kunde()
         {
             return View();
@@ -88,15 +74,15 @@ namespace Database.Controllers
                 .Where(x => x.CustomerID == id);
             foreach(var item in searchResult)
             {
-                edit.Adress = item.Address;
-                edit.City = item.City;
-                edit.ContactName = item.ContactName;
-                edit.ContactTitle = item.ContactTitle;
-                edit.Country = item.Country;
-                edit.Fax = item.Fax;
-                edit.Phone = item.Phone;
-                edit.PLZ = item.PostalCode;
-                edit.CompanyName = item.CompanyName;
+                //edit.Adress = item.Wohnort.Adress;
+                //edit.City = item.City;
+                //edit.ContactName = item.ContactName;
+                //edit.ContactTitle = item.ContactTitle;
+                //edit.Country = item.Country;
+                //edit.Fax = item.Fax;
+                //edit.Phone = item.Phone;
+                //edit.PLZ = item.PostalCode;
+                //edit.CompanyName = item.CompanyName;
             }
             edit.CustomerID = id;
             return View(edit);
@@ -104,54 +90,54 @@ namespace Database.Controllers
 
         public ActionResult AcceptEdit()
         {
-            var customerTitle = Request.Form["customerTitle"];
-            var customer = Request.Form["customer"];
-            var companyName = Request.Form["companyName"];
-            var adress = Request.Form["adress"];
-            var PLZ = Request.Form["PLZ"];
-            var city = Request.Form["city"];
-            var country = Request.Form["country"];
-            var phone = Request.Form["phone"];
-            var fax = Request.Form["fax"];
-            var editCustomer = db.Customers.Where(x => x.CustomerID == edit.CustomerID).First();
-            if (customerTitle != null && customerTitle != edit.ContactTitle)
-            {
-                editCustomer.ContactTitle = customerTitle;
-            }
-            if(customer!=null&& customer != edit.ContactName)
-            {
-                editCustomer.ContactName = customer;
-            }
-            if (companyName != null && companyName != edit.CompanyName)
-            {
-                editCustomer.CompanyName = companyName;
-            }
-            if (adress != null && adress != edit.Adress)
-            {
-                editCustomer.Address = adress;
-            }
-            if (PLZ != null && PLZ != edit.PLZ)
-            {
-                editCustomer.PostalCode = PLZ;
-            }
-            if (city != null && city != edit.City)
-            {
-                editCustomer.City = city;
-            }
-            if (country != null && country != edit.Country)
-            {
-                editCustomer.Country = country;
-            }
-            if (phone != null && phone != edit.Phone)
-            {
-                editCustomer.Phone = phone;
-            }
-            if (fax != null && fax != edit.Fax)
-            {
-                editCustomer.Fax = fax;
-            }
-            db.SaveChanges();
-            return View("Kunde");
+            //var customerTitle = Request.Form["customerTitle"];
+            //var customer = Request.Form["customer"];
+            //var companyName = Request.Form["companyName"];
+            //var adress = Request.Form["adress"];
+            //var PLZ = Request.Form["PLZ"];
+            //var city = Request.Form["city"];
+            //var country = Request.Form["country"];
+            //var phone = Request.Form["phone"];
+            //var fax = Request.Form["fax"];
+            //var editCustomer = db.Customers.Where(x => x.CustomerID == edit.CustomerID).First();
+            //if (customerTitle != null && customerTitle != edit.ContactTitle)
+            //{
+            //    editCustomer.ContactTitle = customerTitle;
+            //}
+            //if(customer!=null&& customer != edit.ContactName)
+            //{
+            //    editCustomer.ContactName = customer;
+            //}
+            //if (companyName != null && companyName != edit.CompanyName)
+            //{
+            //    editCustomer.CompanyName = companyName;
+            //}
+            //if (adress != null && adress != edit.Adress)
+            //{
+            //    editCustomer.Address = adress;
+            //}
+            //if (PLZ != null && PLZ != edit.PLZ)
+            //{
+            //    editCustomer.PostalCode = PLZ;
+            //}
+            //if (city != null && city != edit.City)
+            //{
+            //    editCustomer.City = city;
+            //}
+            //if (country != null && country != edit.Country)
+            //{
+            //    editCustomer.Country = country;
+            //}
+            //if (phone != null && phone != edit.Phone)
+            //{
+            //    editCustomer.Phone = phone;
+            //}
+            //if (fax != null && fax != edit.Fax)
+            //{
+            //    editCustomer.Fax = fax;
+            //}
+            //db.SaveChanges();
+            //return View("Kunde");
         }
     }
 }

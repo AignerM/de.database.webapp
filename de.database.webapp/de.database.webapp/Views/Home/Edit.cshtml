@@ -10,58 +10,76 @@
         <title>Bearbeiten</title>
     </head>
     <body>
-        <h2>Edit</h2>
+        <h3>Edit</h3>
 
         <form action="./AcceptEdit" method="post">
-            <div class="form-inline">
-                <label>Kontakt Person: </label>
+            <div>
+                <label style="font-size:medium">Kontakt Person: </label>
                 <br />
-                <label for="customerTitle">Kontakt Titel:</label>
-                <input type="text" class="input-sm" name="customerTitle" value="@Model.ContactTitle" id="customerTitle" />
+                <div class="input-field">
+                    <input type="text" class="input-sm" name="customerTitle" value="@Model.ContactTitle" id="customerTitle" />
+                    <label for="customerTitle">Kontakt Titel:</label>
+                </div>
                 <br />
                 <br />
-                <label for="customer">Kontakt Name:</label>
-                <input type="text" class="input-sm" name="customer" value="@Model.ContactName" id="customer" />
+                <div class="input-field">
+                    <input type="text" class="input-sm" name="customer" value="@Model.ContactName" id="customer" />
+                    <label for="customer">Kontakt Name:</label>
+                </div>
             </div>
             <br />
             <div class="form-inline">
-                <label for="companyName">Firmen Name: </label>
-                <input type="text" class="input-sm" name="companyName" value="@Model.CompanyName" id="companyName" />
+                <div class="input-field">
+                    <input type="text" class="input-sm" name="companyName" value="@Model.CompanyName" id="companyName" required/>
+                    <label for="companyName">Firmen Name: </label>
+                </div>
             </div>
             <br />
             <div class="form-inline">
-                <label>Adresse: </label>
+                <label style="font-size:medium">Adresse: </label>
                 <br />
-                <label for="adress">Straße: </label>
-                <input type="text" class="input-sm" name="adress" value="@Model.Adress" id="adress" />
-                <br />
-                <br />
-                <label for="PLZ">Postleitzahl: </label>
-                <input type="text" class="input-sm" name="PLZ" value="@Model.PLZ" id="PLZ"/>
+                <div class="input-field">
+                    <label for="adress">Straße: </label>
+                    <input type="text" class="input-sm" name="adress" value="@Model.Adress" id="adress" />
+                </div>
                 <br />
                 <br />
-                <label for="city">Stadt: </label>
-                <input type="text" class="input-sm" name="city" value="@Model.City" id="city" />
+                <div class="input-field">
+                    <label for="PLZ">Postleitzahl: </label>
+                    <input type="text" class="input-sm" name="PLZ" value="@Model.PLZ" id="PLZ" />
+                </div>
                 <br />
                 <br />
-                <label for="country">Land: </label>
-                <input type="text" class="input-sm" name="country" value="@Model.Country" id="country" />
+                <div class="input-field">
+                    <label for="city">Stadt: </label>
+                    <input type="text" class="input-sm" name="city" value="@Model.City" id="city" />
+                </div>
+                <br />
+                <br />
+                <div class="input-field">
+                    <label for="country">Land: </label>
+                    <input type="text" class="input-sm" name="country" value="@Model.Country" id="country" />
+                </div>
             </div>
             <br />
             <div class="form-inline">
-                <label>Erreichbarkeit: </label>
+                <label style="font-size:medium">Erreichbarkeit: </label>
                 <br />
-                <label for="phone">Telefon: </label>
-                <input type="text" class="input-sm" name="phone" value="@Model.Phone" id="phone" />
+                <div class="input-field">
+                    <label for="phone">Telefon: </label>
+                    <input type="text" class="input-sm" name="phone" value="@Model.Phone" id="phone" />
+                </div>
                 <br />
                 <br />
-                <label for="fax">Fax: </label>
-                <input type="text" class="input-sm" name="fax" value="@Model.Fax" id="fax" />
+                <div class="input-field">
+                    <label for="fax">Fax: </label>
+                    <input type="text" class="input-sm" name="fax" value="@Model.Fax" id="fax" />
+                </div>
             </div>
             <br />
             <div class="form-inline">
-                <button class="btn-black" type="submit">Speichern</button>
-                <a class="btn-black" href="./Kunde">Abbrechen</a>
+                <button class="waves-effect waves-light green btn" type="submit">Speichern</button>
+                <a class="waves-effect waves-light red btn" href="./Kunde">Abbrechen</a>
             </div>
         </form>
     </body>

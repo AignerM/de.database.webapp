@@ -23,6 +23,7 @@ namespace NorthwindContext
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Territory> Territories { get; set; }
+        public virtual DbSet<Wohnort> Wohnort { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +39,11 @@ namespace NorthwindContext
             modelBuilder.Entity<Customer>()
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
+
+            modelBuilder.Entity<Customer>()
+                .HasRequired(e => e.Wohnort)
+                .WithRequiredDependent(e=>e.Customer);
+
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Employees1)

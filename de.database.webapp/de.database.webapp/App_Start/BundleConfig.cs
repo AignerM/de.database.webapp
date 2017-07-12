@@ -23,9 +23,15 @@ namespace de.database.webapp
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/materialize").Include(
+                "~/Scripts/materialize/materialize.js"));
+
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap.css",
+            //          "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/materialize").Include(
+                "~/Content/materialize/css/materialize.css" ,new CssRewriteUrlTransform()));
         }
     }
 }
